@@ -33,6 +33,7 @@
             this.btnElimina = new System.Windows.Forms.Button();
             this.lst = new System.Windows.Forms.ListBox();
             this.txtNumero = new System.Windows.Forms.TextBox();
+            this.btnModifica = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtNome
@@ -42,7 +43,6 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(140, 22);
             this.txtNome.TabIndex = 0;
-            this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged);
             // 
             // btnAggiungi
             // 
@@ -83,11 +83,23 @@
             this.txtNumero.Size = new System.Drawing.Size(140, 22);
             this.txtNumero.TabIndex = 4;
             // 
+            // btnModifica
+            // 
+            this.btnModifica.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModifica.Location = new System.Drawing.Point(32, 143);
+            this.btnModifica.Name = "btnModifica";
+            this.btnModifica.Size = new System.Drawing.Size(320, 37);
+            this.btnModifica.TabIndex = 5;
+            this.btnModifica.Text = "MODIFICA";
+            this.btnModifica.UseVisualStyleBackColor = true;
+            this.btnModifica.Click += new System.EventHandler(this.btnModifica_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnModifica);
             this.Controls.Add(this.txtNumero);
             this.Controls.Add(this.lst);
             this.Controls.Add(this.btnElimina);
@@ -107,6 +119,7 @@
         private System.Windows.Forms.Button btnElimina;
         private System.Windows.Forms.ListBox lst;
         private System.Windows.Forms.TextBox txtNumero;
+        private System.Windows.Forms.Button btnModifica;
     }
 }
 

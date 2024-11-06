@@ -18,7 +18,6 @@ namespace esercitazione_verifica
         public Form1()
         {
             InitializeComponent();
-            btnAggiungi.Enabled = false;
             Contatti c = new Contatti("Lionel", "232355");
             Contatti c2 = new Contatti("Cristano", "123456");
             AggiungiContatto(c, c2);
@@ -34,7 +33,22 @@ namespace esercitazione_verifica
 
         private void btnAggiungi_Click(object sender, EventArgs e)
         {
-            btnAggiungi.Enabled = false;
+            if (txtNome.Text == "" || txtNumero.Text == "")
+            {
+                MessageBox.Show("Inserisci tutti i campi");
+                return;
+            }
+
+            for (int i = 0; i < listaContatti.Count; i++)
+            {
+                if(txtNumero.Text == listaContatti[i].Numero || (txtNome.Text == listaContatti[i].Nome && txtNumero.Text == listaContatti[i].Numero))
+                {
+                    MessageBox.Show("Numero già presente nella lista");
+                    return;
+                }
+            }
+
+
             Contatti cont = new Contatti(txtNome.Text, txtNumero.Text);
             listaContatti.Add(cont);
             lst.Items.Add(cont.ToString());
@@ -56,12 +70,29 @@ namespace esercitazione_verifica
             }
         }
 
-        private void txtNome_TextChanged(object sender, EventArgs e)
+        private void btnModifica_Click(object sender, EventArgs e)
         {
-            if (txtNome.Text == "")
-                btnAggiungi.Enabled = false;
+            if (txtNome.Text == "" || txtNumero.Text == "")
+            {
+                MessageBox.Show("Inserisci tutti i campi");
+                return;
+            }
+
+            if (lst.SelectedIndex != -1)
+            {
+                int selectedIndex = lst.SelectedIndex;
+                listaContatti[selectedIndex].Nome = txtNome.Text;
+                listaContatti[selectedIndex].Numero = txtNumero.Text;
+
+                lst.Items[selectedIndex] = listaContatti[selectedIndex];
+
+                txtNome.Text = "";
+                txtNumero.Text = "";
+            }
             else
-                btnAggiungi.Enabled = true;
+            {
+                MessageBox.Show("Seleziona un contatto da modificare");
+            }
         }
     }
 }
