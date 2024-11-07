@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -93,6 +94,55 @@ namespace esercitazione_verifica
             {
                 MessageBox.Show("Seleziona un contatto da modificare");
             }
+        }
+
+        private void txtCerca_TextChanged(object sender, EventArgs e)
+        {
+            string ricerca = txtCerca.Text.ToLower();
+            lst.Items.Clear();
+
+            foreach (var contatto in listaContatti)
+            {
+                if (contatto.Nome.ToLower().Contains(ricerca) || contatto.Numero.Contains(ricerca))
+                    lst.Items.Add(contatto.ToString());
+            }
+        }
+
+        private void btnCarica_Click(object sender, EventArgs e)
+        {
+            if (!File.Exists("Contatti.txt"))
+            {
+                MessageBox.Show("Il file Contatti.txt non esiste.");
+                return;
+            }
+
+            listaContatti.Clear();
+            lst.Items.Clear();
+
+            using (StreamReader sr = new StreamReader("Contatti.txt"))
+            {
+                string[] contatto;
+                while (!sr.EndOfStream)
+                {
+                    contatto = sr.ReadLine().Split(',');
+                    Contatti c = new Contatti(contatto[0], contatto[1]);
+                    listaContatti.Add(c);
+                    lst.Items.Add(c.ToString());
+                }
+            }
+        }
+
+
+        private void btnSalva_Click(object sender, EventArgs e)
+        {
+            using (StreamWriter sw = new StreamWriter("Contatti.txt", false))
+            {
+                foreach (var contatto in listaContatti)
+                {
+                    sw.WriteLine($"{contatto.Nome},{contatto.Numero}");
+                }
+            }
+            MessageBox.Show("Rubrica salvata correttamente");
         }
     }
 }

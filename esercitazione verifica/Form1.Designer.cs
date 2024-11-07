@@ -34,6 +34,9 @@
             this.lst = new System.Windows.Forms.ListBox();
             this.txtNumero = new System.Windows.Forms.TextBox();
             this.btnModifica = new System.Windows.Forms.Button();
+            this.txtCerca = new System.Windows.Forms.TextBox();
+            this.btnSalva = new System.Windows.Forms.Button();
+            this.btnCarica = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtNome
@@ -72,7 +75,7 @@
             this.lst.ItemHeight = 16;
             this.lst.Location = new System.Drawing.Point(460, 32);
             this.lst.Name = "lst";
-            this.lst.Size = new System.Drawing.Size(318, 148);
+            this.lst.Size = new System.Drawing.Size(318, 292);
             this.lst.TabIndex = 3;
             // 
             // txtNumero
@@ -94,11 +97,42 @@
             this.btnModifica.UseVisualStyleBackColor = true;
             this.btnModifica.Click += new System.EventHandler(this.btnModifica_Click);
             // 
+            // txtCerca
+            // 
+            this.txtCerca.Location = new System.Drawing.Point(32, 211);
+            this.txtCerca.Name = "txtCerca";
+            this.txtCerca.Size = new System.Drawing.Size(320, 22);
+            this.txtCerca.TabIndex = 6;
+            this.txtCerca.TextChanged += new System.EventHandler(this.txtCerca_TextChanged);
+            // 
+            // btnSalva
+            // 
+            this.btnSalva.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalva.Location = new System.Drawing.Point(32, 279);
+            this.btnSalva.Name = "btnSalva";
+            this.btnSalva.Size = new System.Drawing.Size(140, 37);
+            this.btnSalva.TabIndex = 7;
+            this.btnSalva.Text = "SALVA";
+            this.btnSalva.UseVisualStyleBackColor = true;
+            // 
+            // btnCarica
+            // 
+            this.btnCarica.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCarica.Location = new System.Drawing.Point(212, 279);
+            this.btnCarica.Name = "btnCarica";
+            this.btnCarica.Size = new System.Drawing.Size(140, 37);
+            this.btnCarica.TabIndex = 8;
+            this.btnCarica.Text = "CARICA";
+            this.btnCarica.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnCarica);
+            this.Controls.Add(this.btnSalva);
+            this.Controls.Add(this.txtCerca);
             this.Controls.Add(this.btnModifica);
             this.Controls.Add(this.txtNumero);
             this.Controls.Add(this.lst);
@@ -120,6 +154,9 @@
         private System.Windows.Forms.ListBox lst;
         private System.Windows.Forms.TextBox txtNumero;
         private System.Windows.Forms.Button btnModifica;
+        private System.Windows.Forms.TextBox txtCerca;
+        private System.Windows.Forms.Button btnSalva;
+        private System.Windows.Forms.Button btnCarica;
     }
 }
 
